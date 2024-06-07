@@ -1,0 +1,3 @@
+stringVar := "example string"
+NewStr := RegExReplace(stringVar, "^\w", "$U0")
+MsgBox(NewStr)  ; Shows the result

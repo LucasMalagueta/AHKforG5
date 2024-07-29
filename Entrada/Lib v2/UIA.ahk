@@ -55,7 +55,7 @@ class UIA {
  * Initialized IUIAutomation version can be altered with changing the global IUIAutomationMaxVersion
  * variable, which by default is set to the latest available UIA version.
  */
-static __New() {
+__New() {
     global IUIAutomationMaxVersion
     this.IUIAutomationVersion := IUIAutomationMaxVersion+1, this.ptr := 0
     ; The following is a partial head-way into making the UIA class name-agnostic (that is, making it possible to rename and reference UIA more easily, eg when wrapped inside inside another class).

@@ -43,7 +43,7 @@ NumpadAdd:: {
 
         ;Espera a setinha pra cima do scroll de itens aparecer e clica nela
         PgwFEl.WaitElementFromPath("YsE0").Click("left")
-        Send,"{Click 15}"
+        Send "{Click 15}"
 
         ;Espera botao de impostos aparecer e clica nele
         PgwFEl.WaitElementFromPath("Y4ur").ControlClick()

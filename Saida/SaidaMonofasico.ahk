@@ -1,7 +1,7 @@
 ﻿#SingleInstance, force
 ;#Include %A_ScriptDir%\Lib\UIA_Interface.ahk
-#Include %A_ScriptDir%\Lib\FindText.ahk
-#Include %A_ScriptDir%\Lib\matFunctions.ahk
+#Include <FindText>
+#Include <matFunctions>
 SetTitleMatchMode, 2
 Menu, Tray, Icon, Shell32.dll, 44
 

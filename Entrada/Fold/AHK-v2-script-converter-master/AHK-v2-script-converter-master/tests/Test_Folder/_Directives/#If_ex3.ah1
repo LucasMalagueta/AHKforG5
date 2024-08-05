@@ -1,2 +1,0 @@
-#If
-Esc::ExitApp

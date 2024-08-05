@@ -1,1 +1,0 @@
-ControlHideDropDown("ComboBox1","Some Window Title")

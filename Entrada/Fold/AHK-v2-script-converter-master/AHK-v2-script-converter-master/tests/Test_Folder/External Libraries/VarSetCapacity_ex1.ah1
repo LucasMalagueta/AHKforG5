@@ -1,1 +1,0 @@
-VarSetCapacity(MyVar, 10240000)

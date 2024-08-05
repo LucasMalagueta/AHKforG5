@@ -1,1 +1,0 @@
-#Hotstring, NoMouse

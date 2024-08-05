@@ -1,1 +1,0 @@
-FileSetAttrib, ^H, C:\MyFiles

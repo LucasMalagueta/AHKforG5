@@ -1,1 +1,0 @@
-RegRead, OutputVar, HKEY_LOCAL_MACHINE\Software\SomeApplication, TestValue

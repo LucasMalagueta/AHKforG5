@@ -1,1 +1,0 @@
-Run, %ComSpec% /c dir /b > C:\list.txt && type C:\list.txt && pause

@@ -1,1 +1,0 @@
-OutputVar := RegRead("HKEY_LOCAL_MACHINE\Software\SomeApplication", "TestValue")

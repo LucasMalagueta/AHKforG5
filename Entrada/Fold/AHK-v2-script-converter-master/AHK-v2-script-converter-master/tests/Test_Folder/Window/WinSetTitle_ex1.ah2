@@ -1,1 +1,0 @@
-WinSetTitle("This is a new title", "Untitled - Notepad")

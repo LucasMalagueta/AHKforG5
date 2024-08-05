@@ -1,1 +1,0 @@
-EnvGet, OutputVar, LogonServer

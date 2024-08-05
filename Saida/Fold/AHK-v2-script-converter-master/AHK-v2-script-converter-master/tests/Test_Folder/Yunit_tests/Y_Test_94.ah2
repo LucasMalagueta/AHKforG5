@@ -1,1 +1,0 @@
-FileAppend((true) ? Ord("t") . A_ComSpec : Ord("w") . A_ComSpec, "*")

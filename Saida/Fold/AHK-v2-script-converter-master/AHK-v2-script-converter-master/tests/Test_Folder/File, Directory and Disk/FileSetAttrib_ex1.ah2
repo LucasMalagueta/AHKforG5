@@ -1,1 +1,0 @@
-FileSetAttrib("+RH", "C:\MyFiles\*.*", "DF")  ; +RH is identical to +R+H

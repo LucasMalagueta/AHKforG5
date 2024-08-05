@@ -1,1 +1,0 @@
-#MaxThreadsPerHotkey 3

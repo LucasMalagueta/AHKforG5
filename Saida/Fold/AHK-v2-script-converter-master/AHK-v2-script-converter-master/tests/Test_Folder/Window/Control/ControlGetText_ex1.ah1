@@ -1,1 +1,0 @@
-ControlGetText, OutputVar, Edit1, Untitled -

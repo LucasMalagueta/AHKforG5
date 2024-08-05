@@ -1,1 +1,0 @@
-SysGet, MouseButtonCount, 43

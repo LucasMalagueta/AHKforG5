@@ -1,1 +1,0 @@
-VarSetCapacity(vTarget , RequestedCapacity, FillByte)*0

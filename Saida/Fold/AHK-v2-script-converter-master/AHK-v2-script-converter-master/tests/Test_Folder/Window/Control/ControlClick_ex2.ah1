@@ -1,1 +1,0 @@
-ControlClick, x55 y77, Some Window Title

@@ -1,1 +1,0 @@
-FileRecycle("C:\temp files\*.tmp")

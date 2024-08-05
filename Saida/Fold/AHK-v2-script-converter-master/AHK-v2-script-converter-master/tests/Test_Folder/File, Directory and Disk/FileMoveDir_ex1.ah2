@@ -1,1 +1,0 @@
-DirMove("C:\My Folder", "D:\My Folder")

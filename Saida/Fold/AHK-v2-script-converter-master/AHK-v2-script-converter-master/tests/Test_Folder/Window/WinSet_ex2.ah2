@@ -1,1 +1,0 @@
-WinSetTransColor("White", "Untitled - Notepad")

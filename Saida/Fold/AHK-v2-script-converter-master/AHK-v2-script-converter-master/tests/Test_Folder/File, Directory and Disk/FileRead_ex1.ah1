@@ -1,1 +1,0 @@
-FileRead, OutputVar, C:\My Documents\My File.txt

@@ -1,1 +1,0 @@
-SetDefaultMouseSpeed(0)

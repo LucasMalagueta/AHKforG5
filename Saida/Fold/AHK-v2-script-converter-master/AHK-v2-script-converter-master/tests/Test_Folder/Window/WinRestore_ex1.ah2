@@ -1,1 +1,0 @@
-WinRestore("Untitled - Notepad")

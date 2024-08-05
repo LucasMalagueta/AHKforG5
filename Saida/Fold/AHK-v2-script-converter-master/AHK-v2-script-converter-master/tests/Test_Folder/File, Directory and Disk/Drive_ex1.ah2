@@ -1,1 +1,0 @@
-DriveSetLabel("D:", "BackupDrive")

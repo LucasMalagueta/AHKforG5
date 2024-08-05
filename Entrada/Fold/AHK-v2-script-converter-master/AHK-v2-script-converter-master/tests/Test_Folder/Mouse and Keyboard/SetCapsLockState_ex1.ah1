@@ -1,1 +1,0 @@
-SetCapsLockState, % !GetKeyState("CapsLock", "T")

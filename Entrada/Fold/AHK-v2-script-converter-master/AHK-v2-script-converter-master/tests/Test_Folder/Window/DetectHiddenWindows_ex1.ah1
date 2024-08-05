@@ -1,1 +1,0 @@
-DetectHiddenWindows, On

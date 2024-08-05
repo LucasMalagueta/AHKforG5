@@ -1,1 +1,0 @@
-FileGetVersion, Version, C:\My Application.exe

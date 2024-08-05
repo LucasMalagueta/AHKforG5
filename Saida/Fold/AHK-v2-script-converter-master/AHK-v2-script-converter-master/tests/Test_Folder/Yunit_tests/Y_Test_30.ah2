@@ -1,1 +1,0 @@
-DirCreate("C:\My Folder")

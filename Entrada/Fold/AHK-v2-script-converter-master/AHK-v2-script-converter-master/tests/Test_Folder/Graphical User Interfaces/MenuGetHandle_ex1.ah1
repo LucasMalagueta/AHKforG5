@@ -1,1 +1,0 @@
-item_count := DllCall("GetMenuItemCount", "ptr", MenuGetHandle("MyMenu"))

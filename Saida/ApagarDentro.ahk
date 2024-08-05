@@ -1,6 +1,6 @@
-﻿        #SingleInstance, force
-#Include %A_ScriptDir%\Lib\FindText.ahk
-#Include %A_ScriptDir%\Lib\matFunctions.ahk
+﻿#SingleInstance, force
+#Include <FindText>
+#Include <matFunctions>
 SetTitleMatchMode, 2
 SetKeyDelay, 5
 Menu, Tray, Icon, Shell32.dll, 44

@@ -1,1 +1,0 @@
-#HotkeyModifierTimeout 100

@@ -1,1 +1,0 @@
-EnvSet("AutGUI", "Some text to put in the variable.")

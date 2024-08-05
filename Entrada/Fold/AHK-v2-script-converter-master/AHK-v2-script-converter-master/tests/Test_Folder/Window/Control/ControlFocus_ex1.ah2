@@ -1,1 +1,0 @@
-ControlFocus("OK", "Some Window Title")

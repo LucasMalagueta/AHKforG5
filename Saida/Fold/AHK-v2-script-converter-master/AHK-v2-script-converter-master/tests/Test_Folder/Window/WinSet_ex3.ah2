@@ -1,1 +1,0 @@
-WinSetAlwaysOnTop(-1, "Calculator")

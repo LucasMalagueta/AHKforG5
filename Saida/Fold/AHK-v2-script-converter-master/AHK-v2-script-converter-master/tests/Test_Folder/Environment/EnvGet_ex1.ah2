@@ -1,1 +1,0 @@
-OutputVar := EnvGet("LogonServer")

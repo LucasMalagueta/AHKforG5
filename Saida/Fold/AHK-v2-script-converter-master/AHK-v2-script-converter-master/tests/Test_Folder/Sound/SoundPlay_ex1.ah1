@@ -1,1 +1,0 @@
-SoundPlay, %A_WinDir%\Media\ding.wav

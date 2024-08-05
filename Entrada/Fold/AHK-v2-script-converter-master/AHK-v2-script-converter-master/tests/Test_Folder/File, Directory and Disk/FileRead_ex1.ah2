@@ -1,1 +1,0 @@
-OutputVar := Fileread("C:\My Documents\My File.txt")

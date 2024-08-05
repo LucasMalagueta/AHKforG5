@@ -1,1 +1,0 @@
-SetWinDelay(10)

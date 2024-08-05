@@ -1,1 +1,0 @@
-OutputVar := ControlGetText("Edit1", "Untitled -")

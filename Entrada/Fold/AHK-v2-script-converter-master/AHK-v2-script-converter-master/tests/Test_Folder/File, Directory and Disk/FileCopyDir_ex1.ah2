@@ -1,1 +1,0 @@
-DirCopy("C:\My Folder", "C:\Copy of My Folder")

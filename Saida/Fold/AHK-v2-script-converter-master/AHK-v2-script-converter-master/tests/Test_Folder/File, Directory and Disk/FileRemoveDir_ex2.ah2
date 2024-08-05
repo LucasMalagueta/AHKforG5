@@ -1,1 +1,0 @@
-DirDelete("C:\Download Temp", 1)

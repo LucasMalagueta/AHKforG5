@@ -1,1 +1,0 @@
-DetectHiddenText(False)

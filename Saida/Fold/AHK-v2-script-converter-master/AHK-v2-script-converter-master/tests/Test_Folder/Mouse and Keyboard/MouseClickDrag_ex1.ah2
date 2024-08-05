@@ -1,1 +1,0 @@
-MouseClickDrag("left", 0, 200, 600, 400)

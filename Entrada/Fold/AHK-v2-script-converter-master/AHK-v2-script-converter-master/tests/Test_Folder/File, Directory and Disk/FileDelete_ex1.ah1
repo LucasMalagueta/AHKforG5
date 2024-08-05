@@ -1,1 +1,0 @@
-FileDelete, C:\temp files\*.tmp

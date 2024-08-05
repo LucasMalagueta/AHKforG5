@@ -1,1 +1,0 @@
-FileSetAttrib("+A", "C:\*.ini", "R")

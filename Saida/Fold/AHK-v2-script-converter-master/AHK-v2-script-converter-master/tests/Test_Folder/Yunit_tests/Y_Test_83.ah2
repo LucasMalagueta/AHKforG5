@@ -1,2 +1,0 @@
-; REMOVED: #NoEnv
-FileAppend("hi", "*")

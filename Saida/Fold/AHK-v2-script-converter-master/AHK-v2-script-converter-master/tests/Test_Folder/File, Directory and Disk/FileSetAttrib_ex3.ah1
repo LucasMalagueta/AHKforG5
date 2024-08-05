@@ -1,1 +1,0 @@
-FileSetAttrib, -R+A, C:\New Text File.txt

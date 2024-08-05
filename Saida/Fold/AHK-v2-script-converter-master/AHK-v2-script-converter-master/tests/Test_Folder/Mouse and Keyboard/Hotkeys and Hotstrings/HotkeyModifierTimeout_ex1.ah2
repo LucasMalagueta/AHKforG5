@@ -1,1 +1,0 @@
-A_HotkeyModifierTimeout := 100

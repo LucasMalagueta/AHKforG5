@@ -1,1 +1,0 @@
-WinSet, AlwaysOnTop, Toggle, Calculator

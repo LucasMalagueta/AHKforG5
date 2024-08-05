@@ -1,1 +1,0 @@
-WinGetPos, X, Y,,, A

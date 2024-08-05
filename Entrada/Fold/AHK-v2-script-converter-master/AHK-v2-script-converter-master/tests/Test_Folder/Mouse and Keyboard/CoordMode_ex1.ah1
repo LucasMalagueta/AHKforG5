@@ -1,1 +1,0 @@
-CoordMode, ToolTip, Screen

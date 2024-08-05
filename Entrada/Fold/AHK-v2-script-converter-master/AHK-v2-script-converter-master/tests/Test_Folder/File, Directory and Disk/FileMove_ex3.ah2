@@ -1,1 +1,0 @@
-FileMove("C:\Folder1\*.txt", "D:\New Folder\*.bkp")

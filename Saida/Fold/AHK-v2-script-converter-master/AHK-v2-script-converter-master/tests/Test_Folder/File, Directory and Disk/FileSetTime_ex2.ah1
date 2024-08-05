@@ -1,1 +1,0 @@
-FileSetTime, 20040122, C:\My Documents\test.doc

@@ -1,1 +1,0 @@
-SetKeyDelay, 0

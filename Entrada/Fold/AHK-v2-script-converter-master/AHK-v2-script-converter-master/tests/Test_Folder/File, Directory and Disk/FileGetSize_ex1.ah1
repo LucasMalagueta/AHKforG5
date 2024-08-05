@@ -1,1 +1,0 @@
-FileGetSize, OutputVar, C:\My Documents\test.doc

@@ -1,1 +1,0 @@
-; REMOVED: #EscapeChar NewChar

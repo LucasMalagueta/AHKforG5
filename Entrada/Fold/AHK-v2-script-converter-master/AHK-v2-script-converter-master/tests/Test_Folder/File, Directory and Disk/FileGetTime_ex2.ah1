@@ -1,1 +1,0 @@
-FileGetTime, OutputVar, C:\My Documents\test.doc, C

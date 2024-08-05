@@ -1,1 +1,0 @@
-MouseButtonCount := SysGet(43)

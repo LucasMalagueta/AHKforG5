@@ -24,7 +24,7 @@ NumpadAdd:: {
     ; Display the extracted value
     ;MsgBox "Valor do campo 'CFOP': " . CFOPV, "Sucesso", 64
 
-    if (CFOPV == 5901 or CFOPV == 5908 or CFOPV == 5912 or CFOPV == 6916 or CFOPV == 5902) {
+    if (CFOPV == 5901 or CFOPV == 5908 or CFOPV == 5912 or CFOPV == 6916 or CFOPV == 5902 or CFOPV == 5903) {
         ;Pegar quantidade de itens do botao Itens
         ItensO := PgwFEl.ElementFromPath("IYYr4/").Dump()
         REGEX := "Value:\s`"([^`"]*)"

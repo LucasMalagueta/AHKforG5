@@ -359,6 +359,29 @@ NumpadAdd:: {
             Send "{Enter 6}"
             Sleep 80  
         }
+
+
+        if (TURBOv == 1.949){
+            PgwFEl.WaitElementFromPath("IY4tt").ControlClick()
+            Sleeper("{BS}", 10, 3)
+            Send 3
+            sleep 100
+            Send "{Enter 2}"
+            if(IPIv  != 0){
+                Send IPIv
+            }
+            Send "{Enter 4}{Sleep 5}"
+            Sleep 80
+            PgwFEl.WaitElementFromPath("IY4wt").ControlClick()
+            Sleeper("{BS}", 10, 2)
+            Sleep 80
+            PgwFEl.WaitElementFromPath("IY4ws").ControlClick()
+            Sleep 80
+            Send "{Enter 3}"
+            Send "{BS}{Enter}{BS}"
+            Send "{Enter 6}"
+            Sleep 80  
+        }
     }   
 }
 

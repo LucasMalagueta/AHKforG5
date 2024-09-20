@@ -9,12 +9,12 @@ ProximaNFE:="|<ProximaNFE>*139$14.E0701w0Tk7z1zwTyLy1y0S060000008"
 NFEAnterior:="|<NFEAnterior>*148$8.0kwzbkQ108"
 cc:="|<c/c>*110$18.S2SV2VU2UU4UU4UU8UU8UVEVSESU"
 delet:="|<delet>*149$20.yE02000U008LXW554VFF8IIG554VSC0400003zzz0000003zzzU008"
-Cinco:="|<5352>*127$26.y3bnc151601E1w0LUMUN48811420EG8V551mCCTU"
-Seis:="|<6932>*127$26.Q3XXcV5560F11U4EET0wM+8114W0EG8V551mCCTU"
-PR:="|<Paraná>*127$13.yTEcMIA+7tx0VUEk8M4A"
+Cinco:="|<5352>*161$27.w3nno02E2U0G0LUAS240EEUU2284YEG74QQzU"
+Seis:="|<6932>*159$28.C1ltt08UUc0W22w28k+87UV8U228mEM91l77Ds"
+PR:="|<Paraná>*162$12.wwWWWWaWwwUYUWUXU"
 CNPJ:="|<CNPJ>*110$34.S247k64AEEUM0l121U2Y4860+ET0M0Z101U2A40a48kE2LYV90aU"
-SeisTres:="|<6352>*127$26.Q3bncV51601E1U0LUT0N4+8114W0EG8V551mCCTU"
-doc:="|<doc>*145$33.Q0037YE00MW200348E00MV400349000MVE0034A000MWy0037Y"
+SeisTres:="|<6352>*156$20.VkD8U0GE04bU6940GF04aG18sXW"
+doc:="|<doc>*149$32.w003D1000m8E00AV40038G000m5000AVU0038jU00nm"
 
 NumpadAdd::
     InputBox, NumCasas, Repetição, Quantas vezes irá rodar?, , 300, 130
@@ -32,32 +32,26 @@ NumpadAdd::
                     
                 If WinActive("Lançamentos Fiscais") {
                     Sleep 10
-                    ;se a nota estiver cancelado, ele pula de nota
-                    if (ok:=FindText(X, Y, 584-150000, 184-150000, 584+150000, 184+150000, 0, 0, doc) or ok:=FindText(X, Y, 363-150000, 350-150000, 363+150000, 350+150000, 0, 0, Cinco)){
-                        flag := 1
-                        Sleep 20
-                    }  
-                    else{
 
-                        ;Procura 5405
-                        if (ok:=FindText(X, Y, 364-150000, 350-150000, 364+150000, 350+150000, 0, 0, Seis)   or ok:=FindText(X, Y, 407-150000, 222-150000, 407+150000, 222+150000, 0, 0, SeisTres)) {
-                            if (ok:=FindText(X, Y, 327-150000, 349-150000, 327+150000, 349+150000, 0, 0, PR)){
-                                ClickOnImage(cc, 15, 18, "L", "C/C", X, Y) 
-                                send,{BS}1
-                                Sleep 10
-                                ClickOnImage(CNPJ, 80, 16, "L", "CNPJ", X, Y)
-                                Send,{BS 4}{sleep 5}1450
-                                Sleep 15
-                                Send, !g 
-                                flag := 1
-                                Sleep 40
-                            }
-                            else {
-                                flag := 1
-                                Sleep 40
-                            }
-                        }
+                    ;Procura 6352 ou 6932
+                    
+                    if (ok:=FindText(X, Y, 327-150000, 349-150000, 327+150000, 349+150000, 0, 0, PR)){
+                        ;MsgBox, [ , OUUU, Eu, 2.5]
+                        ClickOnImage(cc, 15, 18, "L", "C/C", X, Y) 
+                        send,{BS}1
+                        Sleep 10
+                        ClickOnImage(CNPJ, 88, 16, "L", "CNPJ", X, Y)
+                        Send,{Sleep 10}{BS 4}{sleep 10}1450
+                        Sleep 15
+                        Send, !g 
+                        flag := 1
+                        Sleep 40
                     }
+                    else {
+                        flag := 1
+                        Sleep 40
+                    }
+                        
                     
 
                     ;Se achou qualquer cfop entra no if

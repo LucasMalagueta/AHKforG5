@@ -4,6 +4,8 @@
 #Include <FindTextV2>
 #Include <AccV2>
 
+TraySetIcon("C:\Users\" A_Username "\Documents\AutoHotkey\Lib\pngwing.com.ico")
+
 ACHAR := "|<achar>*119$16.100400E0Tsu4EMFDV564ILlT0007s8"
 
 NumpadSub:: {
@@ -383,19 +385,4 @@ NumpadAdd:: {
             Sleep 80  
         }
     }   
-}
-
-
-
-RegExFindValue(String, regexPattern) {
-    ; Use RegExMatch to find the match
-    if (RegExMatch(String, regexPattern, &match)) {
-        ; The value will be in match[1]
-        extractedValue := match[1]
-    } else {
-        MsgBox "Valor não encontrado no campo desejado", "Falha", 16
-        Exit
-    }
-
-    Return extractedValue
 }

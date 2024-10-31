@@ -3,7 +3,7 @@
 #Include <matFunctionsV2>
 #Include <FindTextV2>
 #Include <AccV2>
-TraySetIcon("Shell32.dll","10")
+TraySetIcon("C:\Users\" A_Username "\Documents\AutoHotkey\Lib\pngwing.com.ico")
 
 SetTitleMatchMode 2
 ;Imagens de referencias para clicks
@@ -240,17 +240,3 @@ CorrigirItem() {
 }
 
 ;Type: 50004 (Edit) Value: "1.403" LocalizedType: "editar" AutomationId: "199290" ClassName: "TEditColorido"
-
-
-RegExFindValue(String, regexPattern) {
-    ; Use RegExMatch to find the match
-    if (RegExMatch(String, regexPattern, &match)) {
-        ; The value will be in match[1]
-        extractedValue := match[1]
-    } else {
-        MsgBox "Valor não encontrado no campo desejado", "Falha", 16
-        Exit
-    }
-
-    Return extractedValue
-}

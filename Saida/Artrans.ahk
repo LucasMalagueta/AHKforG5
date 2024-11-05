@@ -2,7 +2,7 @@
 #Include <FindText>
 #Include <matFunctions>
 SetTitleMatchMode, 2
-Menu, Tray, Icon, Shell32.dll, 44       
+Menu, Tray, Icon, C:\Users\%A_Username%\Documents\AutoHotkey\Lib\pngwing.com.ico
 
 Turbo:="|<Turbo>*120$27.y020100E0802012/SC8FG+92+FF8FG+92OFF8BHlo"
 ProximaNFE:="|<ProximaNFE>*139$14.E0701w0Tk7z1zwTyLy1y0S060000008"

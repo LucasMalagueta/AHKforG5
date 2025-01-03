@@ -47,7 +47,7 @@ NumpadAdd:: {
             
             APRAZOv := RegExFindValue(APRAZOo, REGEX)
         } else {
-            APRAZOAv := 0
+            APRAZOv := 0
         }
 
         TURBOo := (PgwFEl.WaitElementFromPath("IY4vt").Dump())

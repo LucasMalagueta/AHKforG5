@@ -199,12 +199,16 @@ C195:="|<C195>*162$35.000000Aw8wwUH8l90V42aO12814rX4E2DVa8U433AFa8YaMVsFtsUU0001
         Sleep 50
     
         Send "!o"
-        Sleep 70
-        Send "!g"
-        Sleep 70
+        Sleep 100
         if(WinExist("Erros")){
             Send "!s"
-            Send 70
+            Sleep 120
+        }
+        Send "!g"
+        Sleep 200
+        if(WinExist("Erros")){
+            Send "!s"
+            Sleep 120
         }
         global ItemAtual += 1
         global Flag := 0
@@ -264,15 +268,17 @@ C195:="|<C195>*162$35.000000Aw8wwUH8l90V42aO12814rX4E2DVa8U433AFa8YaMVsFtsUU0001
         Sleep 50
     
         Send "!o"
-        Sleep 70
-        Send "!g"
+        Sleep 100
         if(WinExist("Erros")){
             Send "!s"
-            Send 70
+            Sleep 120
         }
-        Sleep 70
-        Send "!s"
-        Sleep 70
+        Send "!g"
+        Sleep 200
+        if(WinExist("Erros")){
+            Send "!s"
+            Sleep 120
+        }
         global ItemAtual += 1
         global Flag := 0
     }

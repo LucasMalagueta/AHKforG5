@@ -14,6 +14,7 @@ UmNove:="|<1949>*149$25.E71bM4FoI28e+14Z50SzSU111F1UVwXUHc"
 DoisTres:="|<2353>*153$26.w3nnl04U4E18141XlW04450111UUEETcssu"
 UmTres:="|<1353>*154$25.E7bbs0G0I090+0MwN0222U111F0UUwXXXc"
 Contabil:="|<Contabil>*132$37.S000G2kU08F0M0040UA1mnCSK15Z0cf0WWXoJUFFG++kccd55LXYGSwg"
+CNPJ:="|<CNPJ>*120$34.S247k64AEEUM0l121U2Y4860+ET0M0Z101U2A40a48kE2LYV90aU"
 
 NumpadAdd::
     InputBox, NumCasas, Repetição, Quantas vezes irá rodar?, , 300, 130
@@ -62,15 +63,15 @@ NumpadAdd::
                         ;Coloca codigo do Turbo e confirma
                         Send,3{sleep 5}{Enter 7}{Sleep 10}
                         ;Apaga PIS e COFINS
-                        Send,{BS}{Sleep 5}{Enter}{Sleep 5}{BS}{Sleep 5}{Enter}{Sleep 5}{BS}{Sleep 5}{Enter}{Sleep 5}{BS}{Sleep 5}{Enter}{Sleep 5}{BS}{Sleep 5}{Enter}{Sleep 5}{BS}
+                        Send,{BS}{Sleep 5}{Enter}{Sleep 5}{BS}{Sleep 5}{Enter}{Sleep 5}{BS}{Sleep 5}{Enter}{Sleep 5}{BS}{Sleep 5}{Enter}{Sleep 5}{BS}{Sleep 5}{Enter}{Sleep 5}{BS}{Sleep 5}{Enter}{Sleep 5}{BS}
                         ;Termina de confirmar a nota
                         Send,{Sleep 2} !g
                         Sleep 20                           
                     }
                 }
 
-                 ;Procura 1353 ou 2353
-                else if (ok:=FindText(X, Y, 492-150000, 614-150000, 492+150000, 614+150000, 0, 0, UmTres) or ok:=FindText(X, Y, 702-150000, 579-150000, 702+150000, 579+150000, 0, 0, DoisTres)){
+                 ;Procura 1353
+                else if (ok:=FindText(X, Y, 492-150000, 614-150000, 492+150000, 614+150000, 0, 0, UmTres)){
                     ;Arruma o C/C
                     ClickOnImage(cc, 15, 18, "L", "C/C", X, Y) 
                     send,{BS}1
@@ -83,6 +84,30 @@ NumpadAdd::
                         Send,3{sleep 5}{Enter 6}{Sleep 10}
                         ;Apaga PIS e COFINS
                         Send,{BS}{Sleep 5}{Enter}{Sleep 5}{BS}{Sleep 5}{Enter}
+                        ;Termina de confirmar a nota
+                        Send,{Sleep 2} !g  
+                        Sleep 20                          
+                    }
+                }
+                 ;Procura 2353
+                else if (ok:=FindText(X, Y, 702-150000, 579-150000, 702+150000, 579+150000, 0, 0, DoisTres)){
+                    ;Arruma o C/C e o UF
+                    ClickOnImage(CNPJ, 15, 18, "L", "CNPJ", X, Y)
+                    Sleep 15
+                    send,{Tab 3}
+                    Sleep 15
+                    Send,{BS}1
+                    Sleep 15
+                    ;Clica no Turbo
+                    sleep 8
+                    if ClickOnImage(Turbo, 9, 16, "L", "Turbo", X, Y) {
+                        Sleep 15
+                        ;Coloca codigo do Turbo e confirma
+                        Send,3{sleep 5}{Enter 2}{Sleep 5}{Enter 2}{Sleep 5}{Enter 2}{Sleep 5}{Enter 3}{Sleep 5}{Enter 2}{Sleep 5}{Enter 2}
+                        Sleep 15
+                        ;Apaga PIS e COFINS
+                        Send,{BS}{Sleep 5}{Enter}{Sleep 5}{BS}{Sleep 5}{Enter}
+                        Sleep 15
                         ;Termina de confirmar a nota
                         Send,{Sleep 2} !g  
                         Sleep 20                          

@@ -14,14 +14,9 @@ GroupAdd("G5", "Impostos")
 GroupAdd("G5", "Itens da NF")
 
 ;Variaveis globais
-Global FlagEstado := ""
-Global filePath := ""
-Global NumItem := ""
-Global NumNFE := "000"
-Global UNIDADE := "UNI"
-Global tipoItem := "Mercadoria"
-Global SleepTime := 100
-Global FlagPrint := 0
+global ItemAtual := 0
+Global SleepTime := 180
+Global Flag := 1
 
 nextPos := 0
 
@@ -40,9 +35,7 @@ C195:="|<C195>*162$35.000000Aw8wwUH8l90V42aO12814rX4E2DVa8U433AFa8YaMVsFtsUU0001
         Global CFOPV := RegExFindValue(CFOPO, REGEX)
         Global CFOPV := StrReplace(CFOPV, ".", "")
 
-        global ItemAtual := 0
-
-        if(CFOPV == 7101 or CFOPV == 7102){
+        if(CFOPV == 6110 or CFOPV == 6109 or CFOPV == 5901){
 
             ItensO := PgwFEl.ElementFromPath("IYYr4/").Dump()
             REGEX := "Value:\s`"([^`"]*)"
@@ -50,38 +43,52 @@ C195:="|<C195>*162$35.000000Aw8wwUH8l90V42aO12814rX4E2DVa8U433AFa8YaMVsFtsUU0001
             REGEX := "([^\s]*)"
             Global UltimoItem := RegExFindValue(ItensV, REGEX)
 
+            AbatimentoO := PgwFEl.ElementFromPath("IY4z").Dump()
+            REGEX := "Value:\s`"([^`"]*)"
+            if (RegExMatch(AbatimentoO, REGEX, &match)) {
+                Global AbatimentoV := RegExFindValue(AbatimentoO, REGEX)
+            } else {
+                Global AbatimentoV := 0
+            }
+
             PgwFEl.WaitElementFromPath("IYYr4/").ControlClick()
             Send "^{Enter}"
 
             ;Espera janela dos itens ativar e atualiza handle
             WinWaitActive "Itens da NF"
-            Sleep 70
+            Sleep 180
             PgwFEl := UIA.ElementFromHandle("Itens da NF ahk_exe PgwF.exe")
 
             ;Espera a setinha pra cima do scroll de itens aparecer e clica nela
             PgwFEl.WaitElementFromPath("YsE0").Click("left")
             Send "{Click 15}"
 
-            Sleep 70
+            Sleep 180
 
-            global Flag := 1
-
-            Loop {
-                CorrigirItem()
-                if (UltimoItem == NumItem){
-                    break
+            if(AbatimentoV == 0){
+                Loop {
+                    CorrigirItem()
+                    if (UltimoItem == ItemAtual){
+                        break
+                    }
+                }
+            }else if(AbatimentoV != 0){
+                Loop {
+                    CorrigirItemAbatido()
+                    if (UltimoItem == ItemAtual){
+                        break
+                    }
                 }
             }
-        
-            
-            global Flag := 1
 
             Winactivate "Itens da NF"
             Winclose "Itens da NF"
             WinWaitActive "Lançamentos Fiscais" 
 
+            global Flag := 1
+
             ; Send "!g"
-            ; Sleep 70
+            ; Sleep 180
             ; Send "!s"
 
             ; PgwFEl := UIA.ElementFromHandle("Lançamentos Fiscais")
@@ -90,77 +97,133 @@ C195:="|<C195>*162$35.000000Aw8wwUH8l90V42aO12814rX4E2DVa8U433AFa8YaMVsFtsUU0001
     }   
 
     CorrigirItem() {
-        Sleep 200
         PgwFEl := UIA.ElementFromHandle("Itens da NF ahk_exe PgwF.exe")
-        Sleep 70
+        Sleep 1150
     
         ;Clica na proxima nota
-        if(Flag != 1)
+        if(Flag != 1){
+            Sleep 350
             PgwFEl.WaitElementFromPath("Y/0s").Click()
+        }
+            
 
-        Sleep 70
-
-        ;Pega o numero do proximo item
-        NumItemO := PgwFEl.WaitElementFromPath("Yr4s").Dump()
-        REGEX := "Value:\s`"([^`"]*)"
-        Global NumItem := RegExFindValue(NumItemO, REGEX)
-
-
-        Sleep 70
+        Sleep 325
     
         ;Entrar nos impostos
         PgwFEl.WaitElementFromPath("Y4ur").ControlClick()
         Send "^{Enter}"
-        Sleep 100
+        Sleep 250
     
         WinWaitActive "Impostos"
-        Sleep 70
+        Sleep 180
+
+        PgwFEl := UIA.ElementFromHandle("Impostos")
+
+
+        PgwFEl.WaitElementFromPath("Yu4q").ControlClick()
+        Sleeper("{Tab}", 80, 1)
+        Send "49"
+        Sleeper("{Tab}{BS}", 80, 5)
+        Sleep 80
+
+        Sleeper("{Tab}", 80, 3)
+
+        Send "49"
+        Sleeper("{Tab}{BS}", 80, 5)
+        Sleep 120
+
+    
+        Send "!o"
+        Sleep 200
+        if(WinExist("Erros")){
+            Send "!s"
+            Sleep 250
+        }
+        Send "!g"
+        Sleep 50
+        WinWaitActive "Erros"
+        Sleep 75
+        Send "!s"
+        Sleep 350
+
+        global ItemAtual += 1
+        global Flag := 0
+    }
+
+    CorrigirItemAbatido() {
+        PgwFEl := UIA.ElementFromHandle("Itens da NF ahk_exe PgwF.exe")
+        Sleep 1150
+    
+        ;Clica na proxima nota
+        if(Flag != 1){
+            Sleep 350
+            PgwFEl.WaitElementFromPath("Y/0s").Click()
+        }
+            
+
+        Sleep 325
+    
+        ;Entrar nos impostos
+        PgwFEl.WaitElementFromPath("Y4ur").ControlClick()
+        Send "^{Enter}"
+        Sleep 250
+    
+        WinWaitActive "Impostos"
+        Sleep 250
 
         PgwFEl := UIA.ElementFromHandle("Impostos")
 
         VALORo := PgwFEl.WaitElementFromPath("Yy4qr").Dump()
         REGEX := "Value:\s`"([^`"]*)"
         VALORv := RegExFindValue(VALORo, REGEX)
-        Sleep 70
+        Sleep 250
 
-        ABATIMENTOo := PgwFEl.WaitElementFromPath("Yy4").Dump()
-        REGEX := "Value:\s`"([^`"]*)"
-        ABATIMENTOv := RegExFindValue(ABATIMENTOo, REGEX)
-        Sleep 70
 
-        VALORl := VALORv - ABATIMENTOv
-
-        PgwFEl.WaitElementFromPath("Yy4qr").ControlClick()
-        Sleep 70
-        Send VALORl
-
-        Sleeper("{Tab}", 80, 3)
-        Sleep 70
-        Sleeper("{BS}", 80, 1)
-
-        
+        ;Altera o valor do IPI
+        PgwFEl.WaitElementFromPath("Yv4v").ControlClick()
+        Sleeper("{Tab}", 80, 2)
+        Send VALORv
     
+
+        ;Arruma o Pis e Cofins
         PgwFEl.WaitElementFromPath("Yu4q").ControlClick()
         Sleeper("{Tab}", 80, 1)
-        Send "99"
+        Send "49"
         Sleeper("{Tab}{BS}", 80, 5)
-        Sleep 50
+        Sleep 120
 
-        Sleeper("{Tab}", 80, 1)
-        Sleep 50
-        Send VALORl
-        Sleep 70
-        Sleeper("{Tab}", 80, 1)
+        Sleeper("{Tab}", 80, 3)
+
+        Send "49"
+        Sleeper("{Tab}{BS}", 80, 5)
+        Sleep 180
 
     
         Send "!o"
-        Sleep 70
-        Send "!g"
-        Sleep 70
+        Sleep 200
         if(WinExist("Erros")){
             Send "!s"
-            Send 70
+            Sleep 220
         }
+
+        PgwFEl := UIA.ElementFromHandle("Itens da NF ahk_exe PgwF.exe")
+
+        PgwFEl.WaitElementFromPath("Yr4w").ControlClick()
+        Sleeper("{Tab}+{Tab}", 80, 1)
+        Sleep 270
+        Send "^a^a"
+        Sleep 270
+        Send VALORv
+        Sleep 250
+
+        Send "!g"
+
+        Sleep 75
+        WinWaitActive "Erros"
+        Sleep 75
+        Send "!s"
+        Sleep 350
+        
 
         global ItemAtual += 1
         global Flag := 0

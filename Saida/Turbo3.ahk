@@ -6,20 +6,14 @@ Menu, Tray, Icon, C:\Users\%A_Username%\Documents\AutoHotkey\Lib\pngwing.com.ico
 
 Turbo:="|<Turbo>*120$27.y020100E0802012/SC8FG+92+FF8FG+92OFF8BHlo"
 ProximaNFE:="|<ProximaNFE>*130$13.U0Q0DU7w3zVzwzwzsDk7U301"
-cc:="|<cc>*120$18.S2SV2VU2UU4UU4UU8UU8UVEVSESU"
+CC:="|<cc>*120$18.S2SV2VU2UU4UU4UU8UU8UVEVSESU|<>*143$18.S2SV2VU2UU4UU4UU8UU8UVEVSESU"
 Aprazo:="|<Aprazo>*120$24.422U4220+140+14aF14dF0cYT0cWUUEdUUEaU"
-CincoNove:="|<5929>*127$27.y1llo0FFFU28+DUF2F21sVsE181WEG0HWATAU"
-SeisNove:="|<6929>*127$27.A1llm0FFFU28+DUF2FW1sVwE181WEG0HWATAU"
+CincoNove:="|<5929>*127$27.y1llo0FFFU28+DUF2F21sVsE181WEG0HWATAU|<59292>*154$26.w3Xnc14560F1Fw4EIF0w8wE1414Um0y8syu"
+SeisNove:="|<6929>*127$27.A1llm0FFFU28+DUF2FW1sVwE181WEG0HWATAU|<69292>*157$27.C1ltm0F1FU28+DUF1FW1sFwE141mEN0PWCTiU"
 
 delete(numcasos) {
     loop %numcasos% {
         Send,{bs}{enter}
-    }
-
-    If WinActive("Lançamentos Fiscais") {
-
-    } else {
-        Return
     }
 }
 
@@ -31,14 +25,18 @@ NumpadAdd::
     loop %NumCasas% {
         If WinActive("Lançamentos Fiscais") {
             Sleep 100
-            if ClickOnImage(cc, 15, 18, "L", "C/C", X, Y) {
+            if ClickOnImage(CC, 15, 18, "L", "C/C", X, Y) {
                 send,{BS}   
                 if (ok:=FindText(X, Y, 429-150000, 202-150000, 429+150000, 202+150000, 0, 0, CincoNove)) {
                     if(ClickOnImage(Turbo, 9, 16, "L", "Turbo", X, Y))
                     {
-                        Sleep 10
-                        Send,3{sleep 5}{Enter 6}{Sleep 10}{BS}{Sleep 5}{Enter}{Sleep 5}{BS}{Sleep 5}!g{Sleep 100}
-                        flag := 1
+                        Send,{Sleep 20}{Enter 8}
+                        delete(6)
+                        if(ClickOnImage(Turbo, 9, 16, "L", "Turbo", X, Y)){
+                            Send,3{sleep 5}{Enter 6}
+                            send,{Sleep 10}{BS}{Sleep 5}{Enter}{Sleep 5}{BS}{Sleep 5}!g{Sleep 100}
+                            flag := 1
+                        }
                     }
                     
                 }
@@ -46,9 +44,13 @@ NumpadAdd::
                 else if (ok:=FindText(X, Y, 572-150000, 572-150000, 572+150000, 572+150000, 0, 0, SeisNove)) {
                     if(ClickOnImage(Turbo, 9, 16, "L", "Turbo", X, Y))
                     {
-                        Sleep 10
-                        Send,3{sleep 5}{Enter 6}{Sleep 10}{BS}{Sleep 5}{Enter}{Sleep 5}{BS}{Sleep 5}!g{Sleep 100}
-                        flag := 1
+                        Send,{Sleep 20}{Enter 8}
+                        delete(6)
+                        if(ClickOnImage(Turbo, 9, 16, "L", "Turbo", X, Y)){
+                            Send,3{sleep 5}{Enter 6}
+                            send,{Sleep 10}{BS}{Sleep 5}{Enter}{Sleep 5}{BS}{Sleep 5}!g{Sleep 100}
+                            flag := 1
+                        }
                     }
                     
                 }
@@ -76,9 +78,8 @@ NumpadAdd::
                     Return
                 }    
             }
-        } else {
+        }else{
             Return
         }
     }        
 Return
-

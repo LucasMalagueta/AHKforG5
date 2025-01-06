@@ -125,7 +125,7 @@ C195:="|<C195>*162$35.000000Aw8wwUH8l90V42aO12814rX4E2DVa8U433AFa8YaMVsFtsUU0001
     
         PgwFEl.WaitElementFromPath("Yu4q").ControlClick()
         Sleeper("{Tab}", 80, 1)
-        Send "99"
+        Send "49"
         Sleeper("{Tab}{BS}", 80, 5)
         Sleep 50
 

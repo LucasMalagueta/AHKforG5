@@ -90,9 +90,11 @@ NumpadAdd:: {
 
         ;Sai dos impostos e grava
         Sleep 70
-        Send "!o"
+        Send "!o!o"
         Sleep 70
-        Send "!g"
+        PgwFEl := UIA.ElementFromHandle("Itens da NF")
+        Sleep 150
+        PgwFEl.WaitElementFromPath("Y0").Click()
         Sleep 70
         Send "!s"
         Sleep 70
@@ -107,12 +109,12 @@ NumpadAdd:: {
         Winclose "Itens da NF"
         WinWaitActive "Lançamentos Fiscais" 
 
-        Send "!g"
-        Sleep 70
-        Send "!s"
+        ; Send "!g"
+        ; Sleep 70
+        ; Send "!s"
 
-        PgwFEl := UIA.ElementFromHandle("Lançamentos Fiscais")
-        PgwFEl.ElementFromPath("0qr").Click()
+        ; PgwFEl := UIA.ElementFromHandle("Lançamentos Fiscais")
+        ; PgwFEl.ElementFromPath("0qr").Click()
     }
 
 }
@@ -124,7 +126,7 @@ CorrigirItem() {
     Sleep 70
 
     ;Clica na proxima nota
-    PgwFEl.WaitElementFromPath("Y/0s").Click()
+    PgwFEl.WaitElementFromPath("Y/0r").Click()
     Sleep 70
 
     ;Entrar nos impostos
@@ -164,7 +166,9 @@ CorrigirItem() {
 
     Send "!o"
     Sleep 70
-    Send "!g"
+    PgwFEl := UIA.ElementFromHandle("Itens da NF")
+    Sleep 150
+    PgwFEl.WaitElementFromPath("Y0").Click()
     Sleep 70
     Send "!s"
     Sleep 70

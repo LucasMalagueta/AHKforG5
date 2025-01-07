@@ -111,13 +111,15 @@ NumpadAdd:: {
 
         ;Sai dos impostos e grava
         Sleep 100
-        Send "!o"
+        Send "!o!o"
         Sleep 150
         if (WinActive("Erros")){
         Send "!s"
         }
         Sleep 150
-        Send "!g"
+        PgwFEl := UIA.ElementFromHandle("Itens da NF")
+        Sleep 150
+        PgwFEl.WaitElementFromPath("Y0").Click()
         Sleep 150
         Send "!s"
         Sleep 200
@@ -134,14 +136,14 @@ NumpadAdd:: {
             
             WinWaitActive "Lançamentos Fiscais" 
 
-            Send "!g"
-            Sleep 100
-            Send "!s"
-            Sleep 100
+            ; Send "!g"
+            ; Sleep 100
+            ; Send "!s"
+            ; Sleep 100
 
-            PgwFEl := UIA.ElementFromHandle("Lançamentos Fiscais")
-            Sleep 200
-            PgwFEl.ElementFromPath("0qr").ControlClick()
+            ; PgwFEl := UIA.ElementFromHandle("Lançamentos Fiscais")
+            ; Sleep 200
+            ; PgwFEl.ElementFromPath("0qr").ControlClick()
             Return
         }
 
@@ -162,14 +164,14 @@ NumpadAdd:: {
         
         WinWaitActive "Lançamentos Fiscais" 
 
-        Send "!g"
-        Sleep 100
-        Send "!s"
-        Sleep 100
+        ; Send "!g"
+        ; Sleep 100
+        ; Send "!s"
+        ; Sleep 100
 
-        PgwFEl := UIA.ElementFromHandle("Lançamentos Fiscais")
-        Sleep 200
-        PgwFEl.ElementFromPath("0qr").ControlClick()
+        ; PgwFEl := UIA.ElementFromHandle("Lançamentos Fiscais")
+        ; Sleep 200
+        ; PgwFEl.ElementFromPath("0qr").ControlClick()
     }
 
 }
@@ -181,7 +183,7 @@ CorrigirItem() {
     Sleep 100
 
     ;Clica na proxima nota
-    PgwFEl.WaitElementFromPath("Y/0s").Click()
+    PgwFEl.WaitElementFromPath("Y/0r").Click()
     Sleep 100
 
     ;Entrar nos impostos
@@ -237,13 +239,15 @@ CorrigirItem() {
     Send "{Enter}"
     Sleep 100
 
-    Send "!o"
+    Send "!o!o"
     Sleep 150
     if (WinActive("Erros")){
         Send "!s"
     }
     Sleep 150
-    Send "!g"
+    PgwFEl := UIA.ElementFromHandle("Itens da NF")
+    Sleep 150
+    PgwFEl.WaitElementFromPath("Y0").Click()
     Sleep 150
     Send "!s"
     Sleep 200

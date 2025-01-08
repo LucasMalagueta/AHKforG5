@@ -101,8 +101,9 @@ NumpadAdd:: {
         ;Sai dos impostos e grava
         Sleep 100
         Send "!o"
+        PgwFEl := UIA.ElementFromHandle("Itens da NF")
         Sleep 150
-        Send "!g"
+        PgwFEl.WaitElementFromPath("Y0").Click()
         Sleep 150
         Send "!s"
         Sleep 200
@@ -115,6 +116,7 @@ NumpadAdd:: {
 
         Winactivate "Itens da NF"
         Winclose "Itens da NF"
+        Sleep 100
 
         if Winactive("Valores Lançados"){
             Send "!s"
@@ -124,26 +126,25 @@ NumpadAdd:: {
         
         WinWaitActive "Lançamentos Fiscais" 
 
-        Send "!g"
-        Sleep 100
-        Send "!s"
-        Sleep 100
+        ;Send "!g"
+        ;Sleep 100
+        ;Send "!s"
+        ;Sleep 100
 
-        PgwFEl := UIA.ElementFromHandle("Lançamentos Fiscais")
-        Sleep 200
-        PgwFEl.ElementFromPath("0rr").ControlClick()
+        ; PgwFEl := UIA.ElementFromHandle("Lançamentos Fiscais")
+        ; Sleep 200
+        ; PgwFEl.ElementFromPath("0rr").ControlClick()
     }
 
 }
 
 
 CorrigirItem() {
-    Sleep 300
+    Sleep 450
     PgwFEl := UIA.ElementFromHandle("Itens da NF")
-    Sleep 100
 
-    ;Clica na proxima nota
-    PgwFEl.WaitElementFromPath("Y/0s").Click()
+    ;Clica no proximo item
+    PgwFEl.WaitElementFromPath("Y/0r").Click()
     Sleep 100
 
     ;Entrar nos impostos
@@ -191,11 +192,13 @@ CorrigirItem() {
     Send "{Tab}{BS}"
     Send BCIV
     Send "{Enter}"
-    Sleep 100
+    Sleep 180
 
-    Send "!o"
+    Send "!o!o"
     Sleep 150
-    Send "!g"
+    PgwFEl := UIA.ElementFromHandle("Itens da NF")
+    Sleep 130
+    PgwFEl.WaitElementFromPath("Y0").Click()
     Sleep 150
     Send "!s"
     Sleep 200

@@ -96,7 +96,7 @@ C195:="|<C195>*162$35.000000Aw8wwUH8l90V42aO12814rX4E2DVa8U433AFa8YaMVsFtsUU0001
     
         ;Clica na proxima nota
         if(Flag != 1)
-            PgwFEl.WaitElementFromPath("Y/0s").Click()
+            PgwFEl.WaitElementFromPath("Y/0r").Click()
 
         Sleep 70
 
@@ -136,9 +136,11 @@ C195:="|<C195>*162$35.000000Aw8wwUH8l90V42aO12814rX4E2DVa8U433AFa8YaMVsFtsUU0001
         Sleeper("{Tab}", 80, 1)
 
     
-        Send "!o"
+        Send "!o!o"
         Sleep 70
-        Send "!g"
+        PgwFEl := UIA.ElementFromHandle("Itens da NF")
+        Sleep 130
+        PgwFEl.WaitElementFromPath("Y0").Click()
         Sleep 70
         if(WinExist("Erros")){
             Send "!s"

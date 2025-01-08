@@ -103,7 +103,7 @@ C195:="|<C195>*162$35.000000Aw8wwUH8l90V42aO12814rX4E2DVa8U433AFa8YaMVsFtsUU0001
         ;Clica na proxima nota
         if(Flag != 1){
             Sleep 350
-            PgwFEl.WaitElementFromPath("Y/0s").Click()
+            PgwFEl.WaitElementFromPath("Y/0r").Click()
         }
             
 
@@ -139,7 +139,11 @@ C195:="|<C195>*162$35.000000Aw8wwUH8l90V42aO12814rX4E2DVa8U433AFa8YaMVsFtsUU0001
             Send "!s"
             Sleep 250
         }
-        Send "!g"
+
+        PgwFEl := UIA.ElementFromHandle("Itens da NF")
+        Sleep 130
+        PgwFEl.WaitElementFromPath("Y0").Click()
+        
         Sleep 50
         WinWaitActive "Erros"
         Sleep 75
@@ -157,7 +161,7 @@ C195:="|<C195>*162$35.000000Aw8wwUH8l90V42aO12814rX4E2DVa8U433AFa8YaMVsFtsUU0001
         ;Clica na proxima nota
         if(Flag != 1){
             Sleep 350
-            PgwFEl.WaitElementFromPath("Y/0s").Click()
+            PgwFEl.WaitElementFromPath("Y/0r").Click()
         }
             
 
@@ -199,7 +203,7 @@ C195:="|<C195>*162$35.000000Aw8wwUH8l90V42aO12814rX4E2DVa8U433AFa8YaMVsFtsUU0001
         Sleep 180
 
     
-        Send "!o"
+        Send "!o!o"
         Sleep 200
         if(WinExist("Erros")){
             Send "!s"
@@ -216,7 +220,9 @@ C195:="|<C195>*162$35.000000Aw8wwUH8l90V42aO12814rX4E2DVa8U433AFa8YaMVsFtsUU0001
         Send VALORv
         Sleep 250
 
-        Send "!g"
+        PgwFEl := UIA.ElementFromHandle("Itens da NF")
+        Sleep 130
+        PgwFEl.WaitElementFromPath("Y0").Click()
 
         Sleep 75
         WinWaitActive "Erros"

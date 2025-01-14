@@ -298,6 +298,8 @@ NumpadAdd::
                         }
                     }
 
+                    Sleep 15
+
                     ;Se achou qualquer cfop entra no if
                     if (flag == 1) {
                         ;Loop para esperar a nota carregar
@@ -312,6 +314,7 @@ NumpadAdd::
                         if (ClickOnImage(ProximaNFE, 0, 0, "L", "Seta Direita", X, Y) and ActiveActivate("Lançamentos Fiscais")) {
                             flag := 0
                         }
+                        Sleep 15
                         
                     } else {
                         MsgBox, 48, Aviso, nenhum dos CFOPs encontrados.,1

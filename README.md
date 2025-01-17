@@ -1,1 +1,1 @@
-![Saida](Video/SaídaAuto.mp4)
+![Saida](Video/SaídaAuto.gif)

@@ -95,17 +95,19 @@ NumpadAdd:: {
 CorrigirItem() {
     WinWaitActive "Itens da NF|"
     Sleep 800
-    ;PgwFEl := UIA.ElementFromHandle("Itens da NF|")
-    Sleep 200
+    PgwFEl := UIA.ElementFromHandle("Itens da NF|")
+    Sleep 1500
 
     ;Clica na proxima nota
     if(Flag == 0){
-        Sleep 350
+        Sleep 1200
         PgwFEl.WaitElementFromPath("Y/0r").Click()
+        ; Sleep 100
+        ; Send "Enter"
     }
         
 
-    Sleep 325
+    Sleep 1000
 
     ;Entrar nos impostos
     PgwFEl.WaitElementFromPath("Y4ur").ControlClick()
@@ -141,12 +143,14 @@ CorrigirItem() {
     PgwFEl := UIA.ElementFromHandle("Itens da NF|")
     Sleep SleepTime
     PgwFEl.WaitElementFromPath("Y0").Click()
+    ; Sleep 100
+    ; Send "Enter"
     
     Sleep 350
     ;WinWaitActive "Erros"
     Sleep 75
     Send "!s"
-    Sleep 350
+    Sleep 2500
 
     global ItemAtual += 1
     global Flag := 0
@@ -154,17 +158,19 @@ CorrigirItem() {
 
 CorrigirItemAbatido() {
     Sleep 300
-    ;PgwFEl := UIA.ElementFromHandle("Itens da NF|")
-    Sleep 1200
+    PgwFEl := UIA.ElementFromHandle("Itens da NF|")
+    Sleep 1500
 
     ;Clica na proxima nota
     if(Flag == 0){
-        Sleep 350
+        Sleep 1200
         PgwFEl.WaitElementFromPath("Y/0r").Click()
+        ; Sleep 100
+        ; Send "Enter"
     }
         
 
-    Sleep 325
+    Sleep 1000
 
     ;Entrar nos impostos
     PgwFEl.WaitElementFromPath("Y4ur").ControlClick()
@@ -214,19 +220,21 @@ CorrigirItemAbatido() {
     PgwFEl.WaitElementFromPath("Yr4w").ControlClick()
     Sleeper("{Tab}+{Tab}", 80, 1)
     Sleep 270
-    Send "^a^a"
+    ;Send "^a^a"
     Sleep 270
     Send VALORv
     Sleep 250
 
     Sleep SleepTime
     PgwFEl.WaitElementFromPath("Y0").Click()
+    ; Sleep 100
+    ; Send "Enter"
 
     Sleep 350
     ;WinWaitActive "Erros"
     Sleep 100
     Send "!s"
-    Sleep 380
+    Sleep 2500
     
 
     global ItemAtual += 1

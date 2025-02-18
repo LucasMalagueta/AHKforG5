@@ -41,8 +41,8 @@ NumpadAdd::
                 If WinActive("Lançamentos Fiscais") {
                     Sleep 5
 
-                    ;Procura 5102
-                    if (ok:=FindText(X, Y, 363-150000, 350-150000, 363+150000, 350+150000, 0, 0, CincoUm)) {
+                    ;Procura 5102 e 5202
+                    if (ok:=FindText(X, Y, 363-150000, 350-150000, 363+150000, 350+150000, 0, 0, CincoUm) or ok:=FindText(X, Y, 363-150000, 350-150000, 363+150000, 350+150000, 0, 0, CincoDois)) {
                         ;Clica no Turbo
                         sleep 8
                         if ClickOnImage(Turbo, 9, 16, "L", "Turbo", X, Y) {
@@ -57,8 +57,8 @@ NumpadAdd::
                         }
                     }
 
-                    ;Procura 5405
-                    else if (ok:=FindText(X, Y, 364-150000, 350-150000, 364+150000, 350+150000, 0, 0, CincoQuatro)) {
+                    ;Procura 5405 e 6404
+                    else if (ok:=FindText(X, Y, 364-150000, 350-150000, 364+150000, 350+150000, 0, 0, CincoQuatro) or ok:=FindText(X, Y, 364-150000, 350-150000, 364+150000, 350+150000, 0, 0, SeisQuatro)) {
                         ;Clica no Turbo
                         sleep 8
                         if ClickOnImage(Turbo, 9, 16, "L", "Turbo", X, Y) {
@@ -73,7 +73,8 @@ NumpadAdd::
                         }
                     }
 
-                    else if (ok:=FindText(X, Y, 364-150000, 350-150000, 364+150000, 350+150000, 0, 0, SeisUmZeroUm)) {
+                    ;Procura 6101, 5101 e 6102
+                    else if (ok:=FindText(X, Y, 364-150000, 350-150000, 364+150000, 350+150000, 0, 0, SeisUmZeroUm) or ok:=FindText(X, Y, 364-150000, 350-150000, 364+150000, 350+150000, 0, 0, CincoUmZeroUm) or ok:=FindText(X, Y, 364-150000, 350-150000, 364+150000, 350+150000, 0, 0, SeisUm)) {
                         ;Clica no Turbo
                         sleep 8
                         if ClickOnImage(Turbo, 9, 16, "L", "Turbo", X, Y) {
@@ -88,56 +89,8 @@ NumpadAdd::
                         }
                     }
 
-
-                    else if (ok:=FindText(X, Y, 364-150000, 350-150000, 364+150000, 350+150000, 0, 0, CincoUmZeroUm)) {
-                        ;Clica no Turbo
-                        sleep 8
-                        if ClickOnImage(Turbo, 9, 16, "L", "Turbo", X, Y) {
-                            Sleep 10
-                            ;Coloca codigo no Turbo e confirma
-                            Send,1{sleep 5}{Enter 6}{Sleep 10}
-                            ;Apaga PIS e COFINS
-                            Send,{BS}{Sleep 5}{Enter}{Sleep 5}{BS}{Sleep 5}{Enter}
-                            ;Termina de confirmar a nota
-                            Send,{Sleep 2} !g
-                            flag := 1                            
-                        }
-                    }
-
-                    ;Procura 6102
-                    else if (ok:=FindText(X, Y, 364-150000, 350-150000, 364+150000, 350+150000, 0, 0, SeisUm)) {
-                        ;Clica no Turbo
-                        sleep 8
-                        if ClickOnImage(Turbo, 9, 16, "L", "Turbo", X, Y) {
-                            Sleep 10
-                            ;Coloca codigo no Turbo e confirma
-                            Send,1{sleep 5}{Enter 6}{Sleep 10}
-                            ;Apaga PIS e COFINS
-                            Send,{BS}{Sleep 5}{Enter}{Sleep 5}{BS}{Sleep 5}{Enter}
-                            ;Termina de confirmar a nota
-                            Send,{Sleep 2} !g
-                            flag := 1                            
-                        }
-                    }
-
-                    ;Procura 6404
-                    else if (ok:=FindText(X, Y, 364-150000, 350-150000, 364+150000, 350+150000, 0, 0, SeisQuatro)) {
-                        ;Clica no Turbo
-                        sleep 8
-                        if ClickOnImage(Turbo, 9, 16, "L", "Turbo", X, Y) {
-                            Sleep 10
-                            ;Coloca codigo no Turbo e confirma
-                            Send,113{sleep 5}{Enter 6}{Sleep 10}
-                            ;Apaga PIS e COFINS
-                            Send,{BS}{Sleep 5}{Enter}{Sleep 5}{BS}{Sleep 5}{Enter}
-                            ;Termina de confirmar a nota
-                            Send,{Sleep 2} !g
-                            flag := 1                            
-                        }
-                    }
-
-                    ;Procura 6108
-                    else if (ok:=FindText(X, Y, 407-150000, 222-150000, 407+150000, 222+150000, 0, 0, SeisUmZero)) {
+                    ;Procura 6108, 5106 e 6106
+                    else if (ok:=FindText(X, Y, 407-150000, 222-150000, 407+150000, 222+150000, 0, 0, SeisUmZero) or ok:=FindText(X, Y, 407-150000, 222-150000, 407+150000, 222+150000, 0, 0, CincoUmZeroSeis) or ok:=FindText(X, Y, 407-150000, 222-150000, 407+150000, 222+150000, 0, 0, SeisUmZeroSeis)) {
                         ;Clica no Turbo
                         sleep 8
                         if ClickOnImage(Turbo, 9, 16, "L", "Turbo", X, Y) {
@@ -157,31 +110,8 @@ NumpadAdd::
                         }
                     }
 
-                    
-
-                    ;Procura 5106
-                    else if (ok:=FindText(X, Y, 407-150000, 222-150000, 407+150000, 222+150000, 0, 0, CincoUmZeroSeis)) {
-                        ;Clica no Turbo
-                        sleep 8
-                        if ClickOnImage(Turbo, 9, 16, "L", "Turbo", X, Y) {
-                            Sleep 10
-                            ;Coloca codigo do Turbo e confirma
-                            Send,1{sleep 5}{Enter 6}{Sleep 10}
-                            ;Apaga o C/C
-                            ClickOnImage(cc, 15, 18, "L", "C/C", X, Y)
-                            Send, {BS}
-                            ;Apaga PIS e COFINS
-                            ClickOnImage(Pis, 0, 0,  "L", "Pis", X, Y)
-                            Sleep 20
-                            Send,{BS}{Sleep 5}{Enter}{Sleep 5}{BS}{Sleep 5}{Enter}
-                            ;Termina de confirmar a nota
-                            Send,{Sleep 2} !g
-                            flag := 1                            
-                        }
-                    }
-
-                    ;Procura 5949
-                    else if (ok:=FindText(X, Y, 407-150000, 222-150000, 407+150000, 222+150000, 0, 0,CincoNove)) {
+                    ;Procura 5949, 6949 e 5902
+                    else if (ok:=FindText(X, Y, 407-150000, 222-150000, 407+150000, 222+150000, 0, 0,CincoNove) or ok:=FindText(X, Y, 407-150000, 222-150000, 407+150000, 222+150000, 0, 0,SeisNove) or ok:=FindText(X, Y, 407-150000, 222-150000, 407+150000, 222+150000, 0, 0,CincoNoveZeroDois)) {
                         ;Clica no Turbo
                         sleep 8
                         if ClickOnImage(Turbo, 9, 16, "L", "Turbo", X, Y) {
@@ -213,59 +143,6 @@ NumpadAdd::
                         }
                     }
 
-                    ;Procura 6949
-                    else if (ok:=FindText(X, Y, 407-150000, 222-150000, 407+150000, 222+150000, 0, 0,SeisNove)) {
-                        ;Clica no Turbo
-                        sleep 8
-                        if ClickOnImage(Turbo, 9, 16, "L", "Turbo", X, Y) {
-                            Sleep 10
-                            ;Coloca codigo do Turbo e confirma
-                            Send,3{sleep 5}{Enter 6}{Sleep 10}
-                            ;Apaga PIS e COFINS
-                            Send,{BS}{Sleep 5}{Enter}{Sleep 5}{BS}{Sleep 5}{Enter}
-                            ;Termina de confirmar a nota
-                            Send,{Sleep 2} !g
-                            flag := 1                            
-                        }
-                    }
-                    
-                    ;Procura 6106
-                    else if (ok:=FindText(X, Y, 407-150000, 222-150000, 407+150000, 222+150000, 0, 0, SeisUmZeroSeis)) {
-                        ;Clica no Turbo
-                        sleep 8
-                        if ClickOnImage(Turbo, 9, 16, "L", "Turbo", X, Y) {
-                            Sleep 10
-                            ;Coloca codigo do Turbo e confirma
-                            Send,1{sleep 5}{Enter 6}{Sleep 10}
-                            ;Apaga o C/C
-                            ClickOnImage(cc, 15, 18, "L", "C/C", X, Y)
-                            Send, {BS}
-                            ;Apaga PIS e COFINS
-                            ClickOnImage(Pis, 0, 0,  "L", "Pis", X, Y)
-                            Sleep 20
-                            Send,{BS}{Sleep 5}{Enter}{Sleep 5}{BS}{Sleep 5}{Enter}
-                            ;Termina de confirmar a nota
-                            Send,{Sleep 2} !g
-                            flag := 1                            
-                        }
-                    }
-
-                    ;Proocura 5902
-                    else if (ok:=FindText(X, Y, 407-150000, 222-150000, 407+150000, 222+150000, 0, 0,CincoNoveZeroDois)) {
-                        ;Clica no Turbo
-                        sleep 8
-                        if ClickOnImage(Turbo, 9, 16, "L", "Turbo", X, Y) {
-                            Sleep 10
-                            ;Coloca codigo do Turbo e confirma
-                            Send,3{sleep 5}{Enter 6}{Sleep 10}
-                            ;Apaga PIS e COFINS
-                            Send,{BS}{Sleep 5}{Enter}{Sleep 5}{BS}{Sleep 5}{Enter}
-                            ;Termina de confirmar a nota
-                            Send,{Sleep 2} !g
-                            flag := 1                            
-                        }
-                    }
-
                     ;Proocura 5124
                     else if (ok:=FindText(X, Y, 407-150000, 222-150000, 407+150000, 222+150000, 0, 0,CincoUmDoisQuatro)) {
                         ;Clica no Turbo
@@ -282,23 +159,7 @@ NumpadAdd::
                         }
                     }
 
-                    ;Procura 5202
-                    else if (ok:=FindText(X, Y, 363-150000, 350-150000, 363+150000, 350+150000, 0, 0, CincoDois)) {
-                        ;Clica no Turbo
-                        sleep 8
-                        if ClickOnImage(Turbo, 9, 16, "L", "Turbo", X, Y) {
-                            Sleep 10
-                            ;Coloca codigo do Turbo e confirma
-                            Send,1{sleep 5}{Enter 6}{Sleep 10}
-                            ;Apaga PIS e COFINS
-                            Send,{BS}{Sleep 5}{Enter}{Sleep 5}{BS}{Sleep 5}{Enter}
-                            ;Termina de confirmar a nota
-                            Send,{Sleep 2} !g
-                            flag := 1                            
-                        }
-                    }
-
-                    Sleep 15
+                    Sleep 30
 
                     ;Se achou qualquer cfop entra no if
                     if (flag == 1) {

@@ -37,7 +37,7 @@ NumpadAdd:: {
         REGEX := "Value:\s`"([^`"]*)"
         Global ItensV := RegExFindValue(ItensO, REGEX)
         REGEX := "([^\s]*)"
-        Global UltimoItem := RegExFindValue(ItensV, REGEX)
+        Global ItensV := RegExFindValue(ItensV, REGEX)
 
         AbatimentoO := PgwFEl.ElementFromPath("IY4z").Dump()
         REGEX := "Value:\s`"([^`"]*)"
@@ -62,18 +62,12 @@ NumpadAdd:: {
         Sleep SleepTime
 
         if(AbatimentoV == 0){
-            Loop {
+            Loop ItensV {
                 CorrigirItem()
-                if (UltimoItem == ItemAtual){
-                    break
-                }
             }
         }else if(AbatimentoV != 0){
-            Loop {
+            Loop ItensV {
                 CorrigirItemAbatido()
-                if (UltimoItem == ItemAtual){
-                    break
-                }
             }
         }
 

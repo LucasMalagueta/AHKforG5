@@ -64,6 +64,7 @@ NumpadAdd:: {
         Sleep 70
         Send "060"
         Send "{Enter}"
+        Sleep 50
 
         ;Clica no quadrado "SOMAR ICMS ST"
         PgwFEl.WaitElementFromPath("Yy2").ControlClick()
@@ -180,6 +181,8 @@ CorrigirItem() {
     Sleep 70
     Send "060"
     Send "{Enter}"
+    Sleep 50
+
 
     ;Clica no quadrado "SOMAR ICMS ST"
     PgwFEl.WaitElementFromPath("Yy2").ControlClick()

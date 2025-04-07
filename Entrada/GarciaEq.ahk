@@ -64,10 +64,10 @@ NumpadAdd:: {
         Sleep 70
         Send "060"
         Send "{Enter}"
-        Sleep 50
+        Sleep 80
 
         ;Clica no quadrado "SOMAR ICMS ST"
-        PgwFEl.WaitElementFromPath("Yy2").ControlClick()
+        PgwFEl.WaitElementFromPath("Yy2").Click()
         Sleep 70
 
         ;Clica no CST do IPI, apaga e coloca 49
@@ -137,6 +137,7 @@ NumpadAdd:: {
         Global ItensV := ItensV - 1
     
         loop ItensV {
+            Sleep 2000
             CorrigirItem()
         }
 
@@ -156,22 +157,20 @@ NumpadAdd:: {
 
 
 CorrigirItem() {
-    Sleep 200
-    PgwFEl := UIA.ElementFromHandle("Itens da NF ahk_exe PgwF.exe")
-    Sleep 70
+    PgwFEl := UIA.ElementFromHandle("Itens da NF")
 
     ;Clica na proxima nota
     PgwFEl.WaitElementFromPath("Y/0r").Click()
-    Sleep 70
+    Sleep 140
 
     ;Entrar nos impostos
     PgwFEl.WaitElementFromPath("Y4ur").ControlClick()
     Send "^{Enter}"
-    Sleep 70
+    Sleep 100
 
     ;Espera janela de impostos ativar
     WinWaitActive "Impostos"
-    Sleep 70
+    Sleep 80
 
     ;Atualiza o handle da janela
     PgwFEl := UIA.ElementFromHandle("Impostos ahk_exe PgwF.exe")
@@ -181,11 +180,11 @@ CorrigirItem() {
     Sleep 70
     Send "060"
     Send "{Enter}"
-    Sleep 50
+    Sleep 80
 
 
     ;Clica no quadrado "SOMAR ICMS ST"
-    PgwFEl.WaitElementFromPath("Yy2").ControlClick()
+    PgwFEl.WaitElementFromPath("Yy2").Click()
     Sleep 70
 
     ;Clica no CST do IPI, apaga e coloca 49
@@ -243,9 +242,10 @@ CorrigirItem() {
     PgwFEl := UIA.ElementFromHandle("Itens da NF")
     Sleep 150
     PgwFEl.WaitElementFromPath("Y0").Click()
-    Sleep 70
+
+    WinWaitActive "Erros"
+    Sleep 30
     Send "!s"
-    Sleep 70
 }
 
 ;Type: 50004 (Edit) Value: "1.403" LocalizedType: "editar" AutomationId: "199290" ClassName: "TEditColorido"

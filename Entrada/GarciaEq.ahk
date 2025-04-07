@@ -26,10 +26,10 @@ NumpadAdd:: {
     ; Display the extracted value
     ;MsgBox "Valor do campo 'CFOP': " . CFOPV, "Sucesso", 64
 
-    if (CFOPV == 1904) {
+    if (CFOPV == 1403) {
+
         ;Pegar quantidade de itens do botao Itens
         ItensO := PgwFEl.ElementFromPath("IYYr4/").Dump()
-        REGEX := "Value:\s`"([^`"]*)"
         Global ItensV := RegExFindValue(ItensO, REGEX)
         REGEX := "([^\s]*)"
         Global ItensV := RegExFindValue(ItensV, REGEX)
@@ -56,26 +56,59 @@ NumpadAdd:: {
         WinWaitActive "Impostos"
         Sleep 70
 
-        ;Apaga conteudo do segundo quadradinho e coloca 090
-        Send "{Tab}{BS}"
-        Sleep 70
-        Send "090"
-
-        ;Apaga conteudo do quarto quadradinho e coloca 3
-        Sleeper("{Tab}", 80, 2)
-        Sleeper("{BS}", 80, 3)
-        Send "3"
-        Sleep 70
-
         ;Atualiza o handle da janela
         PgwFEl := UIA.ElementFromHandle("Impostos ahk_exe PgwF.exe")
 
-        ;Clica no CST do PIS COFINS apaga e coloca 73
-        PgwFEl.WaitElementFromPath("Yt4y").ControlClick()
-        Send "^a{BS}"
-        Sleep 50
-        Send "99{Enter}"
+        ;Apaga conteudo do CST e coloca 060
+        Send "{Tab}{BS}"
+        Sleep 70
+        Send "060"
+        Send "{Enter}"
 
+        ;Clica no quadrado "SOMAR ICMS ST"
+        PgwFEl.WaitElementFromPath("Yy2").ControlClick()
+        Sleep 70
+
+        ;Clica no CST do IPI, apaga e coloca 49
+        PgwFEl.WaitElementFromPath("Yv4v").ControlClick()
+        Send "^a{BS}"
+
+        Sleep 50
+        Send "49{Enter}"
+        Sleep 50
+        Send "4{Enter}"
+        
+
+        ;Clica no CST do PIS
+        PgwFEl.WaitElementFromPath("Yt4y").ControlClick()
+        Send "{Tab}"
+        Sleep 50
+        Send "{BS 2}"
+        Sleep 50
+        Send "{Tab}"
+        Sleep 50
+        Send "{BS 2}"
+        
+        Sleep 50
+        Sleeper("{Tab}",50,3)
+        Send "{BS 2}"
+
+
+        ;Clica no CST do COFINS
+        PgwFEl.WaitElementFromPath("Ys4y").ControlClick()
+        Send "{Tab}"
+        Sleep 50
+        Send "{BS 2}"
+        Sleep 50
+        Send "{Tab}"
+        Sleep 50
+        Send "{BS 2}"
+        
+        Sleep 50
+        Sleeper("{Tab}",50,3)
+        Send "{BS 2}"
+
+        
         ;Pega valor de BC/ISENTAS/OUTRAS
         BCIO := (PgwFEl.WaitElementFromPath("Yy4qr").Dump())
         REGEX := "Value:\s`"([^`"]*)"
@@ -135,24 +168,61 @@ CorrigirItem() {
     Send "^{Enter}"
     Sleep 70
 
+    ;Espera janela de impostos ativar
     WinWaitActive "Impostos"
     Sleep 70
 
-    Send "{Tab}{BS}"
-    Sleep 70
-    Send "090"
-
-    Sleeper("{Tab}", 80, 2)
-    Sleeper("{BS}", 80, 3)
-    Send "3"
-    Sleep 70
-    
+    ;Atualiza o handle da janela
     PgwFEl := UIA.ElementFromHandle("Impostos ahk_exe PgwF.exe")
 
-    PgwFEl.WaitElementFromPath("Yt4y").ControlClick()
+    ;Apaga conteudo do CST e coloca 060
+    Send "{Tab}{BS}"
+    Sleep 70
+    Send "060"
+    Send "{Enter}"
+
+    ;Clica no quadrado "SOMAR ICMS ST"
+    PgwFEl.WaitElementFromPath("Yy2").ControlClick()
+    Sleep 70
+
+    ;Clica no CST do IPI, apaga e coloca 49
+    PgwFEl.WaitElementFromPath("Yv4v").ControlClick()
     Send "^a{BS}"
+
     Sleep 50
-    Send "99{Enter}"
+    Send "49{Enter}"
+    Sleep 50
+    Send "4{Enter}"
+    
+
+    ;Clica no CST do PIS
+    PgwFEl.WaitElementFromPath("Yt4y").ControlClick()
+    Send "{Tab}"
+    Sleep 50
+    Send "{BS 2}"
+    Sleep 50
+    Send "{Tab}"
+    Sleep 50
+    Send "{BS 2}"
+    
+    Sleep 50
+    Sleeper("{Tab}",50,3)
+    Send "{BS 2}"
+
+
+    ;Clica no CST do COFINS
+    PgwFEl.WaitElementFromPath("Ys4y").ControlClick()
+    Send "{Tab}"
+    Sleep 50
+    Send "{BS 2}"
+    Sleep 50
+    Send "{Tab}"
+    Sleep 50
+    Send "{BS 2}"
+    
+    Sleep 50
+    Sleeper("{Tab}",50,3)
+    Send "{BS 2}"
 
     BCIO := (PgwFEl.WaitElementFromPath("Yy4qr").Dump())
     REGEX := "Value:\s`"([^`"]*)"

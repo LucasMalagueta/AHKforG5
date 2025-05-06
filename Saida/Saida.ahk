@@ -25,6 +25,7 @@ CincoNoveZeroDois:="|<5902>*159$27.w3XXo0Wa2U4IELUWW243oEUU2W84Uom74QQzU"
 CincoUmDoisQuatro:="|<5124>*148$27.w0Xko0A2CU0UFLU42G40UbsU4824UW0L4CT2U"
 CincoDois:="|<5202>*161$27.w3nXo02a2U0IELU2W240YEUU8W84W4m74zQzU"
 Pis:="|<Pis>*144$18.yE1V01V01VH2yIWUG4UF4UIcUH8U"
+
 NumpadAdd::
     InputBox, NumCasas, Repetição, Quantas vezes irá rodar?, , 300, 130
     IfEqual, ErrorLevel, 1, Return

@@ -9,6 +9,8 @@ SetTitleMatchMode 2
 ;Imagens de referencias para clicks
 ;Imagens SPED
 
+global flag:=0
+Novo:="|<>*153$33.zzzzzzzzzzzeeeees0000300000s0000300000s0000300000s00003WQ000wIE003IW000uYE0038W000t3U00300000s0000300000ueeeefzzzzzw"
 
 NumpadAdd:: {
     PgwFEl := UIA.ElementFromHandle("Lançamentos Fiscais | ahk_exe PgwF.exe")
@@ -144,7 +146,13 @@ NumpadAdd:: {
         Global ItensV := ItensV - 1
     
         loop ItensV {
+            while (flag == 1) {
+                if (ok:=FindText(&X, &Y, 423-150000, 160-150000, 423+150000, 160+150000, 0, 0, Novo)){
+                    global flag := 0
+                }
+            }
             CorrigirItem()
+            Sleep 120
         }
 
         Winactivate "Itens da NF"
@@ -172,7 +180,7 @@ NumpadAdd:: {
 
 
 CorrigirItem() {
-    Sleep 300
+    Sleep 100
     PgwFEl := UIA.ElementFromHandle("Itens da NF")
     Sleep 100
 
@@ -241,6 +249,7 @@ CorrigirItem() {
     Sleep 150
     Send "!s"
     Sleep 200
+    global flag := 1
 }
 
 ;Type: 50004 (Edit) Value: "1.403" LocalizedType: "editar" AutomationId: "199290" ClassName: "TEditColorido"

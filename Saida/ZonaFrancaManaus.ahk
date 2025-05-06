@@ -17,6 +17,9 @@ SetTitleMatchMode(2)
 global ItemAtual := 0
 Global SleepTime := 220
 Global Flag := 1
+Global Flag2 := 0
+
+Novo:="|<>*153$33.zzzzzzzzzzzeeeees0000300000s0000300000s0000300000s00003WQ000wIE003IW000uYE0038W000t3U00300000s0000300000ueeeefzzzzzw"
 
 nextPos := 0
 
@@ -63,11 +66,23 @@ NumpadAdd:: {
 
         if(AbatimentoV == 0){
             Loop ItensV {
+                while (flag == 1) {
+                    if (ok:=FindText(&X, &Y, 423-150000, 160-150000, 423+150000, 160+150000, 0, 0, Novo)){
+                        global flag := 0
+                    }
+                }
                 CorrigirItem()
+                Sleep 120
             }
         }else if(AbatimentoV != 0){
             Loop ItensV {
+                while (flag == 1) {
+                    if (ok:=FindText(&X, &Y, 423-150000, 160-150000, 423+150000, 160+150000, 0, 0, Novo)){
+                        global flag := 0
+                    }
+                }
                 CorrigirItemAbatido()
+                Sleep 120
             }
         }
 
@@ -88,7 +103,7 @@ NumpadAdd:: {
 
 CorrigirItem() {
     WinWaitActive "Itens da NF|"
-    Sleep 800
+    Sleep 120
     PgwFEl := UIA.ElementFromHandle("Itens da NF|")
     Sleep 1500
 
@@ -148,10 +163,11 @@ CorrigirItem() {
 
     global ItemAtual += 1
     global Flag := 0
+    global Flag2 := 1
 }
 
 CorrigirItemAbatido() {
-    Sleep 300
+    Sleep 120
     PgwFEl := UIA.ElementFromHandle("Itens da NF|")
     Sleep 1500
 
@@ -233,4 +249,5 @@ CorrigirItemAbatido() {
 
     global ItemAtual += 1
     global Flag := 0
+    global Flag2 := 1
 }

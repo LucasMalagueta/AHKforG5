@@ -11,6 +11,8 @@ SetTitleMatchMode 2
 ;Imagens de referencias para clicks
 ;Imagens SPED
 
+Global flag1 := 0
+Novo:="|<>*153$33.zzzzzzzzzzzeeeees0000300000s0000300000s0000300000s00003WQ000wIE003IW000uYE0038W000t3U00300000s0000300000ueeeefzzzzzw"
 
 NumpadAdd:: {
     PgwFEl := UIA.ElementFromHandle("Lançamentos Fiscais | ahk_exe PgwF.exe")
@@ -64,10 +66,9 @@ NumpadAdd:: {
         Sleep 70
         Send "060"
         Send "{Enter}"
-        Sleep 80
 
         ;Clica no quadrado "SOMAR ICMS ST"
-        PgwFEl.WaitElementFromPath("Yy2").Click()
+        PgwFEl.WaitElementFromPath("Yy2").ControlClick()
         Sleep 70
 
         ;Clica no CST do IPI, apaga e coloca 49
@@ -137,8 +138,13 @@ NumpadAdd:: {
         Global ItensV := ItensV - 1
     
         loop ItensV {
-            Sleep 2000
+            while (flag1 == 1) {
+                if (ok:=FindText(&X, &Y, 423-150000, 160-150000, 423+150000, 160+150000, 0, 0, Novo)){
+                    global flag1 := 0
+                }
+            }
             CorrigirItem()
+            Sleep 100
         }
 
         Winactivate "Itens da NF"
@@ -157,20 +163,22 @@ NumpadAdd:: {
 
 
 CorrigirItem() {
-    PgwFEl := UIA.ElementFromHandle("Itens da NF")
+    Sleep 200
+    PgwFEl := UIA.ElementFromHandle("Itens da NF ahk_exe PgwF.exe")
+    Sleep 70
 
     ;Clica na proxima nota
     PgwFEl.WaitElementFromPath("Y/0r").Click()
-    Sleep 140
+    Sleep 70
 
     ;Entrar nos impostos
     PgwFEl.WaitElementFromPath("Y4ur").ControlClick()
     Send "^{Enter}"
-    Sleep 100
+    Sleep 70
 
     ;Espera janela de impostos ativar
     WinWaitActive "Impostos"
-    Sleep 80
+    Sleep 70
 
     ;Atualiza o handle da janela
     PgwFEl := UIA.ElementFromHandle("Impostos ahk_exe PgwF.exe")
@@ -180,11 +188,9 @@ CorrigirItem() {
     Sleep 70
     Send "060"
     Send "{Enter}"
-    Sleep 80
-
 
     ;Clica no quadrado "SOMAR ICMS ST"
-    PgwFEl.WaitElementFromPath("Yy2").Click()
+    PgwFEl.WaitElementFromPath("Yy2").ControlClick()
     Sleep 70
 
     ;Clica no CST do IPI, apaga e coloca 49
@@ -242,10 +248,10 @@ CorrigirItem() {
     PgwFEl := UIA.ElementFromHandle("Itens da NF")
     Sleep 150
     PgwFEl.WaitElementFromPath("Y0").Click()
-
-    WinWaitActive "Erros"
-    Sleep 30
+    Sleep 70
     Send "!s"
+    Sleep 70
+    global flag1 := 1
 }
 
 ;Type: 50004 (Edit) Value: "1.403" LocalizedType: "editar" AutomationId: "199290" ClassName: "TEditColorido"

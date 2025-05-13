@@ -3,6 +3,7 @@
 #Include <matFunctionsV2>
 #Include <AccV2>
 #Include <UIA>
+#Requires AutoHotkey v2.0
 
 TraySetIcon("C:\Users\" A_Username "\Documents\AutoHotkey\Lib\pngwing.com.ico")
 SetTitleMatchMode(2)
@@ -22,13 +23,14 @@ Global UNIDADE := "UNI"
 Global tipoItem := "Mercadoria"
 Global SleepTime := 100
 Global FlagPrint := 0
+Global flag1 := 0
 
 nextPos := 0
 
 NFEe:="|<NFEe>*145$17.WT1YU390xHmOY7n88aEH4US"
 Lupa:="|<Lupa>*210$18.0000z031k40M80A8Q4Ey2Fr2FX2EQ2Ey29r49X4A0860E31U0y0000U"
 C195:="|<C195>*162$35.000000Aw8wwUH8l90V42aO12814rX4E2DVa8U433AFa8YaMVsFtsUU00011U0004000000U|<C195-2>*160$35.0000004s8swUH8l90V42W+12814rU4E2DU28U4214Fa8YUEVsFlsUU00010U0004000000U"
-
+Novo:="|<>*153$33.zzzzzzzzzzzeeeees0000300000s0000300000s0000300000s00003WQ000wIE003IW000uYE0038W000t3U00300000s0000300000ueeeefzzzzzw"
 
 ;Definir qual XML esta sendo trabalhada
     NumpadAdd:: {
@@ -67,10 +69,16 @@ C195:="|<C195>*162$35.000000Aw8wwUH8l90V42aO12814rX4E2DVa8U433AFa8YaMVsFtsUU0001
             global Flag := 1
 
             Loop {
+                
                 CorrigirItem()
                 if (UltimoItem == ItemAtual){
                     break
                 }
+                while (flag1 == 1) {
+                if (ok:=FindText(&X, &Y, 423-150000, 160-150000, 423+150000, 160+150000, 0, 0, Novo)){
+                    global flag1 := 0
+                }
+            }
             }
         
             
@@ -91,9 +99,10 @@ C195:="|<C195>*162$35.000000Aw8wwUH8l90V42aO12814rX4E2DVa8U433AFa8YaMVsFtsUU0001
 
     CorrigirItem() {
         Sleep 200
+
         PgwFEl := UIA.ElementFromHandle("Itens da NF ahk_exe PgwF.exe")
-        Sleep 70
-    
+        Sleep 70  
+
         ;Clica na proxima nota
         if(Flag != 1)
             PgwFEl.WaitElementFromPath("Y/0r").Click()
@@ -105,9 +114,8 @@ C195:="|<C195>*162$35.000000Aw8wwUH8l90V42aO12814rX4E2DVa8U433AFa8YaMVsFtsUU0001
         REGEX := "Value:\s`"([^`"]*)"
         Global NumItem := RegExFindValue(NumItemO, REGEX)
 
-
         Sleep 70
-    
+
         ;Entrar nos impostos
         PgwFEl.WaitElementFromPath("Y4ur").ControlClick()
         Send "^{Enter}"
@@ -118,34 +126,36 @@ C195:="|<C195>*162$35.000000Aw8wwUH8l90V42aO12814rX4E2DVa8U433AFa8YaMVsFtsUU0001
 
         PgwFEl := UIA.ElementFromHandle("Impostos")
 
-        VALORo := PgwFEl.WaitElementFromPath("Yy4qr").Dump()
-        REGEX := "Value:\s`"([^`"]*)"
-        VALORv := RegExFindValue(VALORo, REGEX)
         Sleep 70
+
+        PgwFEl.WaitElementFromPath("Yw4q").ControlClick()
+        Sleeper("{Tab}", 80, 1)
+        Send 99
     
         PgwFEl.WaitElementFromPath("Yu4q").ControlClick()
         Sleeper("{Tab}", 80, 1)
         Send "49"
-        Sleeper("{Tab}{BS}", 80, 5)
-        Sleep 50
+        Sleeper("{Tab}{BS}", 80, 6)
 
-        Sleeper("{Tab}", 80, 1)
-        Sleep 50
-        Send VALORv
-        Sleep 70
-        Sleeper("{Tab}", 80, 1)
+        Sleep 70 
 
+        Sleeper("{Tab}", 80, 2)
+
+        Send "49"
+        Sleeper("{Tab}{BS}", 80, 6)
+        Sleep 60
     
         Send "!o!o"
         Sleep 70
         PgwFEl := UIA.ElementFromHandle("Itens da NF")
         Sleep 130
         PgwFEl.WaitElementFromPath("Y0").Click()
-        Sleep 70
+        Sleep 1800
         if(WinExist("Erros")){
             Send "!s"
             Send 70
         }
         global ItemAtual += 1
         global Flag := 0
+        global flag1 := 1
     }

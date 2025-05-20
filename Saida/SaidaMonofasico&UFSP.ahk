@@ -2,6 +2,7 @@
 ;#Include %A_ScriptDir%\Lib\UIA_Interface.ahk
 #Include <FindText>
 #Include <matFunctions>
+#InstallKeybdHook
 SetTitleMatchMode, 2
 Menu, Tray, Icon, C:\Users\%A_Username%\Documents\AutoHotkey\Lib\pngwing.com.ico
 
@@ -49,18 +50,27 @@ NumpadAdd::
                         }
                     }
 
-                    ;Procura 5403
+                    ;Procura 5405
                     if (ok:=FindText(X, Y, 364-150000, 350-150000, 364+150000, 350+150000, 0, 0, CincoQuatro)) {
                         ;Clica no Turbo
                         if ClickOnImage(Turbo, 9, 16, "L", "Turbo", X, Y) {
                             Sleep 15
+                            send,+{Tab}
+                            Sleep 10
+                            Send, {AppsKey}{Sleep 25}
+                            Send, {Down 3}{Sleep 25}
+                            Send, {Enter}{Sleep 25}
+                            send, {Tab}
                             ;Coloca codigo no Turbo e confirma
-                            Send,113{sleep 5}{Enter 6}{Sleep 10}
+                            Send, 113{sleep 25}{Enter 6}{Sleep 25}
                             ;Não apaga PIS e COFINS
-                            Send,{Sleep 5}{Enter}{Sleep 5}{Sleep 5}{Enter}
+                            Send, {AppsKey}{Sleep 25}
+                            Send, {Down 4}{Sleep 25}
+                            Send, {Enter}{Sleep 25}
+                            Send,{Sleep 10}{Tab}{Sleep 10}{BS}{Sleep 5}{Enter}
                             ;Termina de confirmar a nota
                             Send,{Enter 6}{Sleep 5}
-                            flag := 1                            
+                            flag := 1                             
                         }
                     }
                     

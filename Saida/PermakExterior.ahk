@@ -57,14 +57,14 @@ Novo:="|<>*153$33.zzzzzzzzzzzeeeees0000300000s0000300000s0000300000s00003WQ000wI
 
             ;Espera janela dos itens ativar e atualiza handle
             WinWaitActive "Itens da NF"
-            Sleep 70
+            Sleep 140
             PgwFEl := UIA.ElementFromHandle("Itens da NF ahk_exe PgwF.exe")
 
             ;Espera a setinha pra cima do scroll de itens aparecer e clica nela
             PgwFEl.WaitElementFromPath("YsE0").Click("left")
             Send "{Click 15}"
 
-            Sleep 70
+            Sleep 140
 
             global Flag := 1
 
@@ -89,7 +89,7 @@ Novo:="|<>*153$33.zzzzzzzzzzzeeeees0000300000s0000300000s0000300000s00003WQ000wI
             WinWaitActive "Lançamentos Fiscais" 
 
             ; Send "!g"
-            ; Sleep 70
+            ; Sleep 140
             ; Send "!s"
 
             ; PgwFEl := UIA.ElementFromHandle("Lançamentos Fiscais")
@@ -101,32 +101,32 @@ Novo:="|<>*153$33.zzzzzzzzzzzeeeees0000300000s0000300000s0000300000s00003WQ000wI
         Sleep 200
 
         PgwFEl := UIA.ElementFromHandle("Itens da NF ahk_exe PgwF.exe")
-        Sleep 70  
+        Sleep 140  
 
         ;Clica na proxima nota
         if(Flag != 1)
             PgwFEl.WaitElementFromPath("Y/0r").Click()
 
-        Sleep 70
+        Sleep 140
 
         ;Pega o numero do proximo item
         NumItemO := PgwFEl.WaitElementFromPath("Yr4s").Dump()
         REGEX := "Value:\s`"([^`"]*)"
         Global NumItem := RegExFindValue(NumItemO, REGEX)
 
-        Sleep 70
+        Sleep 140
 
         ;Entrar nos impostos
         PgwFEl.WaitElementFromPath("Y4ur").ControlClick()
         Send "^{Enter}"
-        Sleep 100
+        Sleep 180
     
         WinWaitActive "Impostos"
-        Sleep 70
+        Sleep 140
 
         PgwFEl := UIA.ElementFromHandle("Impostos")
 
-        Sleep 70
+        Sleep 140
 
         PgwFEl.WaitElementFromPath("Yw4q").ControlClick()
         Sleeper("{Tab}", 80, 1)
@@ -137,20 +137,20 @@ Novo:="|<>*153$33.zzzzzzzzzzzeeeees0000300000s0000300000s0000300000s00003WQ000wI
         Send "49"
         Sleeper("{Tab}{BS}", 80, 6)
 
-        Sleep 70 
+        Sleep 140 
 
         Sleeper("{Tab}", 80, 2)
 
         Send "49"
         Sleeper("{Tab}{BS}", 80, 6)
-        Sleep 60
+        Sleep 100
     
         Send "!o!o"
-        Sleep 70
+        Sleep 140
         PgwFEl := UIA.ElementFromHandle("Itens da NF")
         Sleep 130
         PgwFEl.WaitElementFromPath("Y0").Click()
-        Sleep 1800
+        Sleep 3800
         if(WinExist("Erros")){
             Send "!s"
             Send 70
